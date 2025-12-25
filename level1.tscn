@@ -1,0 +1,123 @@
+[gd_scene load_steps=13 format=4 uid="uid://dccr6tppbdjyc"]
+
+[ext_resource type="PackedScene" uid="uid://cvomfe3giy2ts" path="res://player.tscn" id="1_ootpb"]
+[ext_resource type="Script" uid="uid://3pvdkvyjw5cl" path="res://game_manager.gd" id="1_usj0q"]
+[ext_resource type="Texture2D" uid="uid://bcfxbkp4xawp7" path="res://dirtblock (1).png" id="2_v38iq"]
+[ext_resource type="PackedScene" uid="uid://d2hld60dmdfpq" path="res://nxtlvl.tscn" id="3_v8kj3"]
+[ext_resource type="PackedScene" uid="uid://bobn8n5g376sn" path="res://level2.tscn" id="4_v38iq"]
+[ext_resource type="PackedScene" uid="uid://dbcxhv41ty5m7" path="res://pickup_pencil.tscn" id="5_v8kj3"]
+[ext_resource type="PackedScene" uid="uid://dh7ahds7lngg4" path="res://killzone.tscn" id="6_crycw"]
+[ext_resource type="Texture2D" uid="uid://dkts25hssh48m" path="res://Untitled design (14).png" id="7_i2041"]
+[ext_resource type="FontFile" uid="uid://bwg8jpp8meu0r" path="res://Minecraft.ttf" id="8_xy4tn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
+texture = ExtResource("2_v38iq")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_7mycd"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_lquwl")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i2041"]
+normal = Vector2(-0.8166368, -0.57715183)
+distance = -114.337364
+
+[node name="Level 1- Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_usj0q")
+
+[node name="Player" parent="." instance=ExtResource("1_ootpb")]
+position = Vector2(-253, -14)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(2, 0)
+tile_map_data = PackedByteArray("AAD3/wAAAAAAAAAAAAD3/wEAAAAAAAEAAAD4/wEAAAAAAAAAAAD4/wIAAAAAAAEAAAD5/wEAAAAAAAAAAAD5/wIAAAAAAAEAAAD6/wAAAAAAAAAAAAD6/wEAAAAAAAEAAAD7/wAAAAAAAAAAAAD7/wEAAAAAAAEAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAEAAAD//wEAAAAAAAAAAAD//wIAAAAAAAEAAAD6/wIAAAAAAAEAAAD7/wIAAAAAAAEAAAD3/wIAAAAAAAEAAAD3/wMAAAAAAAEAAAD4/wMAAAAAAAEAAAD6/wMAAAAAAAEAAAD5/wMAAAAAAAEAAAD2/wIAAAAAAAEAAAD2/wEAAAAAAAEAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAEAAAABAAIAAAAAAAAAAAABAAMAAAAAAAEAAAACAAIAAAAAAAAAAAACAAMAAAAAAAEAAAADAAEAAAAAAAAAAAADAAIAAAAAAAEAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAEAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAEAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAEAAAD2/wAAAAAAAAAAAAADAAMAAAAAAAEAAAAFAAMAAAAAAAEAAAAGAAIAAAAAAAEAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAEAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAEAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAEAAAALAAEAAAAAAAAAAAALAAIAAAAAAAEAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAEAAAANAAMAAAAAAAAAAAANAAQAAAAAAAEAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAEAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAEAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAEAAAARAAIAAAAAAAAAAAARAAMAAAAAAAEAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAEAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAEAAAAGAAMAAAAAAAAAAAALAAMAAAAAAAAAAAASAAIAAAAAAAAAAAAVAAEAAAAAAAAAAAAVAAIAAAAAAAEAAAAWAAAAAAAAAAAAAAAWAAEAAAAAAAEAAAAXAAAAAAAAAAAAAAAXAAEAAAAAAAEAAAAYAAEAAAAAAAAAAAAYAAIAAAAAAAEAAAAZAAIAAAAAAAAAAAAZAAMAAAAAAAEAAAAbAAIAAAAAAAAAAAAbAAMAAAAAAAEAAAAcAAEAAAAAAAAAAAAcAAIAAAAAAAEAAAAfAAEAAAAAAAAAAAAfAAIAAAAAAAEAAAAcAAMAAAAAAAAAAAAcAAQAAAAAAAEAAAAYAAMAAAAAAAAAAAAYAAQAAAAAAAEAAAAWAAIAAAAAAAAAAAAXAAIAAAAAAAEAAAAWAAMAAAAAAAEAAAAXAAMAAAAAAAEAAAAVAAMAAAAAAAEAAAAVAAQAAAAAAAEAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAEAAAAbAAQAAAAAAAAAAAAfAAMAAAAAAAEAAAAfAAQAAAAAAAEAAAAhAAEAAAAAAAAAAAAhAAIAAAAAAAEAAAAiAAEAAAAAAAAAAAAiAAIAAAAAAAEAAAAjAAIAAAAAAAAAAAAjAAMAAAAAAAEAAAAkAAMAAAAAAAAAAAAkAAQAAAAAAAEAAAAlAAMAAAAAAAAAAAAlAAQAAAAAAAEAAAAmAAMAAAAAAAAAAAAmAAQAAAAAAAEAAAAoAAMAAAAAAAAAAAAoAAQAAAAAAAEAAAApAAIAAAAAAAAAAAApAAMAAAAAAAEAAAAqAAIAAAAAAAAAAAAqAAMAAAAAAAEAAAArAAEAAAAAAAAAAAArAAIAAAAAAAEAAAAsAAEAAAAAAAAAAAAsAAIAAAAAAAEAAAAhAAMAAAAAAAEAAAAiAAMAAAAAAAEAAAAiAAQAAAAAAAEAAAAjAAQAAAAAAAEAAAApAAQAAAAAAAEAAAAqAAQAAAAAAAEAAAArAAMAAAAAAAEAAAAsAAMAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_7mycd")
+
+[node name="NextLevel" parent="." instance=ExtResource("3_v8kj3")]
+position = Vector2(5529, -13)
+next_level_path = ExtResource("4_v38iq")
+
+[node name="PickupPencil" parent="." instance=ExtResource("5_v8kj3")]
+position = Vector2(-1902, -594)
+
+[node name="PickupPencil2" parent="." instance=ExtResource("5_v8kj3")]
+position = Vector2(-1145, -602)
+
+[node name="PickupPencil3" parent="." instance=ExtResource("5_v8kj3")]
+position = Vector2(-573, -578)
+
+[node name="PickupPencil4" parent="." instance=ExtResource("5_v8kj3")]
+position = Vector2(-109, -710)
+
+[node name="PickupPencil5" parent="." instance=ExtResource("5_v8kj3")]
+position = Vector2(416, -583)
+
+[node name="PickupPencil6" parent="." instance=ExtResource("5_v8kj3")]
+position = Vector2(779, -333)
+
+[node name="PickupPencil7" parent="." instance=ExtResource("5_v8kj3")]
+position = Vector2(1346, -458)
+
+[node name="PickupPencil8" parent="." instance=ExtResource("5_v8kj3")]
+position = Vector2(1949, -718)
+
+[node name="PickupPencil9" parent="." instance=ExtResource("5_v8kj3")]
+position = Vector2(2639, -576)
+
+[node name="PickupPencil10" parent="." instance=ExtResource("5_v8kj3")]
+position = Vector2(3008, -580)
+
+[node name="PickupPencil11" parent="." instance=ExtResource("5_v8kj3")]
+position = Vector2(3755, -330)
+
+[node name="PickupPencil12" parent="." instance=ExtResource("5_v8kj3")]
+position = Vector2(4339, -455)
+
+[node name="Killzone" parent="." instance=ExtResource("6_crycw")]
+position = Vector2(-407, -67.99998)
+rotation = 0.9256497
+scale = Vector2(1.7711502, 1.7995942)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(42.405807, 31.409107)
+scale = Vector2(3.246547, 3.0500572)
+shape = SubResource("WorldBoundaryShape2D_i2041")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4419.0
+offset_top = -1634.0
+offset_right = 7749.0
+offset_bottom = 1233.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_i2041")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = -1380.0
+offset_top = -347.0
+offset_right = -964.0
+offset_bottom = -134.0
+theme_override_fonts/font = ExtResource("8_xy4tn")
+theme_override_font_sizes/font_size = 50
+text = "Welcome, Ryan!"

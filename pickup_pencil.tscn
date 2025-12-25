@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbcxhv41ty5m7"]
+
+[ext_resource type="Script" uid="uid://bycek4hx51b18" path="res://pickup_pencil.gd" id="1_3lhxc"]
+[ext_resource type="Texture2D" uid="uid://cmr3kjmjur8x1" path="res://Untitled design (12).png" id="1_hdk78"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lhxc"]
+atlas = ExtResource("1_hdk78")
+region = Rect2(0, 0, 250, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvr0b"]
+atlas = ExtResource("1_hdk78")
+region = Rect2(250, 0, 250, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hjysn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lhxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvr0b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a44ql"]
+radius = 86.145226
+
+[node name="PickupPencil" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_3lhxc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1036, 629)
+scale = Vector2(0.6639999, 0.59599996)
+sprite_frames = SubResource("SpriteFrames_hjysn")
+autoplay = "default"
+frame_progress = 0.89514804
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1028, 634)
+shape = SubResource("CircleShape2D_a44ql")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

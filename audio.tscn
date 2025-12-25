@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqhcy4do2ifd4"]
+
+[ext_resource type="AudioStream" uid="uid://c28emmq5vvxji" path="res://peach soda.mp3" id="1_2od6b"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_2od6b")
+autoplay = true
